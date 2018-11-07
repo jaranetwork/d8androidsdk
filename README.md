@@ -12,6 +12,7 @@ Main purpose of this library is to make communication with Drupal 8 - based serv
 2. Flexible object serialization / deserialization
 3. API can calculate object differences to perform patch requests
 4. Simple entities request
+5. <strike>Cache data</strike>
 
 ### Wiki
 
