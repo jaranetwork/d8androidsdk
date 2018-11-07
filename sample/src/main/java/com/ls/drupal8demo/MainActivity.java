@@ -23,17 +23,17 @@
 package com.ls.drupal8demo;
 
 
+import android.os.Bundle;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBar.Tab;
+import androidx.appcompat.app.ActionBar.TabListener;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ls.drupal8demo.adapters.CategoriesAdapter;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.Tab;
-import android.support.v7.app.ActionBar.TabListener;
-import android.support.v7.app.ActionBarActivity;
-
-public class MainActivity extends ActionBarActivity implements TabListener {
+public class MainActivity extends AppCompatActivity implements TabListener {
 
 	private ViewPager mViewPager;
 

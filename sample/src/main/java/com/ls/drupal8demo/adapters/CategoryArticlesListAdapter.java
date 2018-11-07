@@ -22,8 +22,16 @@
 
 package com.ls.drupal8demo.adapters;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
 import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 import com.android.volley.toolbox.Volley;
@@ -34,17 +42,7 @@ import com.ls.drupal8demo.R;
 import com.ls.drupal8demo.article.ArticlePreview;
 import com.ls.drupal8demo.article.Page;
 import com.ls.http.base.ResponseData;
-import com.ls.util.L;
 import com.ls.util.image.DrupalImageView;
-
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -25,26 +25,23 @@
 package com.ls.drupal;
 
 import com.google.gson.annotations.Expose;
-
-import com.android.volley.VolleyError;
 import com.ls.http.base.BaseRequest;
 import com.ls.http.base.BaseRequest.RequestMethod;
 import com.ls.http.base.ICharsetItem;
 import com.ls.http.base.RequestConfig;
 import com.ls.http.base.ResponseData;
-import com.ls.util.L;
 import com.ls.util.internal.ObjectComparator;
 import com.ls.util.internal.ObjectComparator.Snapshot;
 import com.ls.util.internal.VolleyResponseUtils;
 
 import junit.framework.Assert;
 
-import android.support.annotation.NonNull;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
 
 public abstract class AbstractBaseDrupalEntity implements DrupalClient.OnResponseListener, ICharsetItem
 {

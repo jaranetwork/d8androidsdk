@@ -24,20 +24,19 @@ package com.ls.drupal8demo;
 
 import com.ls.drupal8demo.article.ArticlePreview;
 import com.ls.http.base.SharedGson;
-import com.ls.util.L;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class ArticleActivity extends ActionBarActivity {
+public class ArticleActivity extends AppCompatActivity {
 
 	private final static String ARTICLE_PREVIEW_KEY = "ARTICLE_PREVIEW_KEY";
 

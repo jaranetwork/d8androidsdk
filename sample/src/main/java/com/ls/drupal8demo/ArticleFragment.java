@@ -22,7 +22,6 @@
 
 package com.ls.drupal8demo;
 
-import com.android.volley.VolleyError;
 import com.ls.drupal.AbstractBaseDrupalEntity;
 import com.ls.drupal.AbstractBaseDrupalEntity.OnEntityRequestListener;
 import com.ls.drupal.DrupalClient;
@@ -30,7 +29,7 @@ import com.ls.drupal8demo.article.ArticleWrapper;
 import com.ls.http.base.ResponseData;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
