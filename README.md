@@ -24,7 +24,7 @@ Main purpose of this library is to make communication with Drupal 8 - based serv
 
 ### Integration
 
-Download o clone repository
+Download or clone repository
 
 
 ### Contributions
