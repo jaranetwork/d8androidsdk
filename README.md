@@ -64,9 +64,9 @@ SOFTWARE.
 
 [using google volley]:https://android.googlesource.com/platform/frameworks/volley
 [gson]:https://code.google.com/p/google-gson/
-[Home]:https://github.com/lemberg/d8androidsdk/wiki
-[Integration]:https://github.com/lemberg/d8androidsdk/wiki/Integration
-[User Guide]:https://github.com/lemberg/d8androidsdk/wiki/User-Guide
-[Sample]:https://github.com/lemberg/d8androidsdk/wiki/Sample
-[License]:https://github.com/lemberg/d8androidsdk/wiki/License
+[Home]:https://github.com/jaranetwork/d8androidsdk/wiki
+[Integration]:https://github.com/jaranetwork/d8androidsdk/wiki/Integration
+[User Guide]:https://github.com/jaranetwork/d8androidsdk/wiki/User-Guide
+[Sample]:https://github.com/jaranetwork/d8androidsdk/wiki/Sample
+[License]:https://github.com/jaranetwork/d8androidsdk/wiki/License
 [Gradle, please]:http://gradleplease.appspot.com/
