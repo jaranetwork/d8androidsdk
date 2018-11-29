@@ -24,13 +24,8 @@ Main purpose of this library is to make communication with Drupal 8 - based serv
 
 ### Integration
 
-The lib **soon will be available** on Maven Central, you can find it with [Gradle, please].
+Download or clone repository
 
-```
-dependencies {
-    compile 'com.ls.drupal:library:1.0.0'
-}
-```
 
 ### Contributions
 
