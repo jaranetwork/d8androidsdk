@@ -24,16 +24,15 @@ package com.ls.drupal8demo;
 
 
 import android.os.Bundle;
-import androidx.fragment.app.FragmentTransaction;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBar.Tab;
-import androidx.appcompat.app.ActionBar.TabListener;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.tabs.TabLayout;
 import com.ls.drupal8demo.adapters.CategoriesAdapter;
 
-public class MainActivity extends AppCompatActivity implements TabListener {
+public class MainActivity extends AppCompatActivity {
 
 	private ViewPager mViewPager;
 
@@ -42,35 +41,16 @@ public class MainActivity extends AppCompatActivity implements TabListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_main);
 
-		final ActionBar bar = getSupportActionBar();
-		bar.setTitle(R.string.app_name);
-		bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        final Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
 
-		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager = (ViewPager) findViewById(R.id.viewpager);
 		mViewPager.setAdapter(new CategoriesAdapter(getSupportFragmentManager()));
-		mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			@Override
-			public void onPageSelected(int position) {
-				bar.setSelectedNavigationItem(position);
-			}
-		});
 
-		for (int i = 0; i < AppConstants.CATEGORY.values().length; i++) {
-			bar.addTab(bar.newTab().setText(AppConstants.CATEGORY.values()[i].name).setTabListener(this));
-		}
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
 	}
 
-	@Override
-	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-	}
 
-	@Override
-	public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
-		int position = arg0.getPosition();
-		mViewPager.setCurrentItem(position);
-	}
-
-	@Override
-	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-	}
 }

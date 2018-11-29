@@ -24,7 +24,7 @@ package com.ls.drupal8demo;
 
 public class AppConstants {
 
-	public final static String SERVER_BASE_URL = "http://d8.uat.link/";//"http://vh015.uk.dev-ls.co.uk/";
+	public final static String SERVER_BASE_URL = "http://ubuntu/d8androidsdk/";
 
 	public static enum CATEGORY {
 		ALL_POSTS("All Posts", null),

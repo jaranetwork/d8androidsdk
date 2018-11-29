@@ -46,4 +46,9 @@ public class CategoriesAdapter extends FragmentPagerAdapter {
 		return AppConstants.CATEGORY.values().length;
 	}
 
+	@Override
+	public CharSequence getPageTitle(int position) {
+		return AppConstants.CATEGORY.values()[position].name;
+	}
+
 }

@@ -50,9 +50,7 @@ public class ArticleActivity extends AppCompatActivity {
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		int contentId = 1001;
-		ActionBar bar = this.getSupportActionBar();
-		bar.setDisplayShowHomeEnabled(true);
-		bar.setDisplayHomeAsUpEnabled(true);
+
 		String previewString = getIntent().getStringExtra(ARTICLE_PREVIEW_KEY);
 
 		ArticlePreview preview = SharedGson.getGson().fromJson(previewString, ArticlePreview.class);
@@ -68,7 +66,6 @@ public class ArticleActivity extends AppCompatActivity {
 	}
 
 	private void InitHeaderWithPreview(ArticlePreview preview) {
-		ActionBar bar = getSupportActionBar();
 		String author = preview.getAuthor();
 
 		StringBuilder subtitleText = new StringBuilder();
@@ -77,13 +74,11 @@ public class ArticleActivity extends AppCompatActivity {
 		}
 		subtitleText.append(String.format(" // %s", preview.getDate()));
 
-		bar.setSubtitle(subtitleText);
 
 		String title = preview.getCategory();
 		if (title != null) {
 			title = Html.fromHtml(title).toString();
 		}
-		bar.setTitle(title);
 	}
 
 	@Override

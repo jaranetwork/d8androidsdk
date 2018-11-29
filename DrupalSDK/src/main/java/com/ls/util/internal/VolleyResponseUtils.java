@@ -23,9 +23,6 @@
 package com.ls.util.internal;
 
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Environment;
 
 import com.android.volley.Network;
@@ -34,15 +31,13 @@ import com.android.volley.NoConnectionError;
 import com.android.volley.RequestQueue;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.BaseHttpStack;
 import com.android.volley.toolbox.BasicNetwork;
 import com.android.volley.toolbox.DiskBasedCache;
-import com.android.volley.toolbox.HttpStack;
 import com.android.volley.toolbox.HurlStack;
 
 import java.io.File;
 import java.net.HttpURLConnection;
-
-//import android.net.http.AndroidHttpClient;
 
 /**
  * Created by Lemberg-i5 on 07.10.2014.
@@ -78,7 +73,7 @@ public class VolleyResponseUtils {
     }
 
 
-    public static RequestQueue newRequestQueue(Context context, HttpStack stack,int maxDiskCacheSizeBytes) {
+    public static RequestQueue newRequestQueue(Context context, BaseHttpStack stack, int maxDiskCacheSizeBytes) {
 
         File cacheDir;
 
@@ -89,22 +84,8 @@ public class VolleyResponseUtils {
             cacheDir = new File(context.getCacheDir(), "volley");
         }
 
-        String userAgent = "volley/0";
-        try {
-            String packageName = context.getPackageName();
-            PackageInfo info = context.getPackageManager().getPackageInfo(packageName, 0);
-            userAgent = packageName + "/" + info.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-        }
-
         if (stack == null) {
-            if (Build.VERSION.SDK_INT >= 9) {
-                stack = new HurlStack();
-            } else {
-                // Prior to Gingerbread, HttpUrlConnection was unreliable.
-                // See: http://android-developers.blogspot.com/2011/09/androids-http-clients.html
-                //stack = new HttpClientStack(AndroidHttpClient.newInstance(userAgent));
-            }
+            stack = new HurlStack();
         }
 
         Network network = new BasicNetwork(stack);
