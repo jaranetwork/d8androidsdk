@@ -22,6 +22,8 @@
 
 package com.ls.http.base.handler;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import com.ls.http.base.BaseStringResponseHandler;
@@ -33,8 +35,7 @@ import androidx.annotation.NonNull;
 
 import java.lang.reflect.Type;
 
-class JSONResponseHandler extends BaseStringResponseHandler
-{
+class JSONResponseHandler extends BaseStringResponseHandler {
 
     protected Object itemFromResponse(@NonNull String json,@NonNull Class<?> theClass)
 	{
@@ -42,7 +43,7 @@ class JSONResponseHandler extends BaseStringResponseHandler
 		if (result == null)
 		{
 			Gson gson = SharedGson.getGson();
-			result = gson.fromJson(json, theClass);			
+			result = gson.fromJson(json, theClass);
 		}
 		return result;
 	}

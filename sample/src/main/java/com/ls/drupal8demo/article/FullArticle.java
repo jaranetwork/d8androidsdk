@@ -38,11 +38,12 @@ public class FullArticle {
 	 * get rid of them.
 	 */
 	private String nid;
-	private String body;
 	private String title;
 	private String field_blog_date;
+	private String field_image;
 	private String field_blog_author;
-    private String field_image;
+	private String field_blog_category;
+	private String body;
 
 	public FullArticle(String nodeId) {
 		this.nid = nodeId;
@@ -64,8 +65,13 @@ public class FullArticle {
 		return this.field_blog_date;
 	}
 
+	public String getField_blog_category() {
+		return field_blog_category;
+	}
+
 	public String getNid() {
 		return this.nid;
+
 	}
 
     public String getImage() {

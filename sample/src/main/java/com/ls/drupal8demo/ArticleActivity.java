@@ -28,17 +28,18 @@ import com.ls.http.base.SharedGson;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
 
 public class ArticleActivity extends AppCompatActivity {
-
+	public static String TAG = "ArticleActivity";
 	private final static String ARTICLE_PREVIEW_KEY = "ARTICLE_PREVIEW_KEY";
+	private Toolbar myToolbar;
 
 	public static Intent getExecutionIntent(Context theContext, ArticlePreview article) {
 		Intent intent = new Intent(theContext, ArticleActivity.class);
@@ -49,23 +50,27 @@ public class ArticleActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
-		int contentId = 1001;
-
+		setContentView(R.layout.activity_article);
+		myToolbar = (Toolbar) findViewById(R.id.mainToolbar);
 		String previewString = getIntent().getStringExtra(ARTICLE_PREVIEW_KEY);
 
 		ArticlePreview preview = SharedGson.getGson().fromJson(previewString, ArticlePreview.class);
 		InitHeaderWithPreview(preview);
 
-		View content = new FrameLayout(this);
-		content.setId(contentId);
-		setContentView(content);
 		ArticleFragment articleFragment = ArticleFragment.newInstance(preview.getNid(), preview.getImage());
 		FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-		trans.add(contentId, articleFragment);
+		trans.add(R.id.containerView, articleFragment);
 		trans.commit();
 	}
 
 	private void InitHeaderWithPreview(ArticlePreview preview) {
+		String title = preview.getCategory();
+		if (title != null) {
+			title = Html.fromHtml(title).toString();
+			Log.d(TAG, "TITLE: "+ title);
+		}
+		myToolbar.setTitle(title);
+
 		String author = preview.getAuthor();
 
 		StringBuilder subtitleText = new StringBuilder();
@@ -73,12 +78,8 @@ public class ArticleActivity extends AppCompatActivity {
 			subtitleText.append(String.format("By %s", author));
 		}
 		subtitleText.append(String.format(" // %s", preview.getDate()));
-
-
-		String title = preview.getCategory();
-		if (title != null) {
-			title = Html.fromHtml(title).toString();
-		}
+		myToolbar.setSubtitle(subtitleText);
+		setSupportActionBar(myToolbar);
 	}
 
 	@Override

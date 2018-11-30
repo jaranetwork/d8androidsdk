@@ -30,6 +30,8 @@ import com.ls.http.base.ResponseData;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +44,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class ArticleFragment extends Fragment implements OnEntityRequestListener {
-
 	private final static String ARTICLE_CONTENT_STUB = "%ARTICLE_BODY%";
 	private final static String ARTICLE_TITLE_STUB = "%ARTICLE_TITLE%";
 	private final static String ARTICLE_IMAGE_STUB = "%ARTICLE_IMAGE_URL%";

@@ -46,7 +46,7 @@ public class ArticleWrapper extends AbstractDrupalArrayEntity<FullArticle> {
 	@Override
 	protected String getPath() {
 		Assert.assertNotNull("Node id can't be null while requesting item", this.nid);
-		return "node" + "/" + this.getNid();
+		return "api" + "/" + this.getNid();
 	}
 
 	@Override
