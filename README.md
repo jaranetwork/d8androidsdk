@@ -1,6 +1,6 @@
 ### Description
 
-[Drupal 8 iOS & Android SDKs](http://drupalsdk.com)
+Drupal 8 Android SDKs
 
 Lemberg Drupal SDK is a library for native **Android** applications to communicate with **Drupal** web servers.
 
