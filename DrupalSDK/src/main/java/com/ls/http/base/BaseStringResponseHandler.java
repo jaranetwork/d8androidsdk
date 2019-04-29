@@ -22,6 +22,7 @@
 
 package com.ls.http.base;
 
+import com.android.volley.Cache;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.toolbox.HttpHeaderParser;
@@ -56,8 +57,31 @@ public abstract class BaseStringResponseHandler extends ResponseHandler
 		return result;
 	}
 
-    protected Response<ResponseData> parseNetworkResponse(NetworkResponse response,Object responseClassSpecifier)
-    {
+    protected Response<ResponseData> parseNetworkResponse(NetworkResponse response,Object responseClassSpecifier) {
+
+        Cache.Entry cacheEntry = HttpHeaderParser.parseCacheHeaders(response);
+        if (cacheEntry == null) {
+            cacheEntry = new Cache.Entry();
+        }
+        final long cacheHitButRefreshed = 3 * 60 * 1000; // in 3 minutes cache will be hit, but also refreshed on background
+        final long cacheExpired = 24 * 60 * 60 * 1000; // in 24 hours this cache entry expires completely
+        long now = System.currentTimeMillis();
+        final long softExpire = now + cacheHitButRefreshed;
+        final long ttl = now + cacheExpired;
+        cacheEntry.data = response.data;
+        cacheEntry.softTtl = softExpire;
+        cacheEntry.ttl = ttl;
+        String headerValue;
+        headerValue = response.headers.get("Date");
+        if (headerValue != null) {
+            cacheEntry.serverDate = HttpHeaderParser.parseDateAsEpoch(headerValue);
+        }
+        headerValue = response.headers.get("Last-Modified");
+        if (headerValue != null) {
+            cacheEntry.lastModified = HttpHeaderParser.parseDateAsEpoch(headerValue);
+        }
+        cacheEntry.responseHeaders = response.headers;
+
         String resultStr = parseResponseString(response);
         ResponseData responseData = new ResponseData();
 
@@ -69,7 +93,7 @@ public abstract class BaseStringResponseHandler extends ResponseHandler
             responseData.data = this.itemFromResponseWithSpecifier(resultStr, responseClassSpecifier);
         }
 
-        Response<ResponseData> result = Response.success(responseData, HttpHeaderParser.parseCacheHeaders(response));
+        Response<ResponseData> result = Response.success(responseData, cacheEntry);
 
         responseData.error = result.error;
 
